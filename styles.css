@@ -1,0 +1,116 @@
+/* Basic Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f7d9a8; /* Chicking theme color */
+    overflow: hidden;
+  }
+  
+  /* Popup Container */
+  .popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    display: none; /* Hidden initially */
+    z-index: 1000;
+    max-width: 90%;
+  }
+  
+  .popup img {
+    width: 100px;
+    margin-bottom: 20px;
+  }
+  
+  /* Party Poppers Animation */
+  .confetti {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: #ff6b6b;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    animation: confettiAnimation 1s infinite;
+  }
+  
+  @keyframes confettiAnimation {
+    0% {
+      opacity: 0;
+      transform: translateY(0) scale(0.5);
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(-300px) rotate(360deg) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(0) scale(0.5);
+    }
+  }
+  
+  /* Offers Section */
+  .offers {
+    display: none;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+    font-size: 16px;
+    margin-top: 20px;
+    max-width: 90%;
+    text-align: center;
+  }
+  
+  .offers h2 {
+    color: #d12428; /* Chicking red theme */
+    font-size: 20px;
+  }
+  
+  .offers ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .offers li {
+    margin: 10px 0;
+  }
+  
+  .offers img {
+    width: 200px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 480px) {
+    .popup {
+      padding: 15px 20px;
+      font-size: 16px;
+    }
+  
+    .popup img {
+      width: 80px;
+    }
+  
+    .offers {
+      font-size: 14px;
+    }
+  
+    .offers img {
+      width: 150px;
+    }
+  }
+  
