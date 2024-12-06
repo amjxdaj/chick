@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celebration Popup</title>
+  <style>
+    /* Basic styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+      overflow: hidden;
+    }
+
+    /* Popup container */
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px 30px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      display: none; /* Hidden initially */
+      z-index: 1000;
+      max-width: 90%;
+    }
+
+    /* Party poppers animation (hidden initially) */
+    .confetti {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background-color: #ff6b6b;
+      border-radius: 50%;
+      opacity: 0;
+      pointer-events: none;
+      animation: confettiAnimation 1s infinite;
+    }
+
+    /* Keyframes for confetti effect */
+    @keyframes confettiAnimation {
+      0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.5);
+      }
+      50% {
+        opacity: 1;
+        transform: translateY(-300px) rotate(360deg) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(0) scale(0.5);
+      }
+    }
+
+    /* Styling for offers section */
+    .offers {
+      display: none;
+      padding: 15px;
+      background-color: #ffeb3b;
+      border-radius: 10px;
+      font-size: 16px;
+      margin-top: 20px;
+      max-width: 90%;
+      text-align: center;
+    }
+
+    /* Image inside popup */
+    .popup img {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 20px;
+    }
+
+    /* Responsive adjustments for small screens */
+    @media (max-width: 480px) {
+      .popup {
+        padding: 15px 20px;
+        font-size: 16px;
+      }
+
+      .popup img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .offers {
+        font-size: 14px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Surprise popup -->
+  <div class="popup" id="popup">
+    <div>
+      <img src="https://img.icons8.com/ios/452/party.png" alt="celebrate">
+      Surprise! 🎉 Click here to see special offers!
+    </div>
+  </div>
+
+  <!-- Offers section -->
+  <div class="offers" id="offers">
+    <h2>Special Offers Just for You!</h2>
+    <ul>
+      <li>Buy 1 Get 1 Free on selected items!</li>
+      <li>20% off on all orders over $50!</li>
+      <li>Free shipping on orders over $100!</li>
+    </ul>
+  </div>
+
+  <!-- Hidden confetti elements -->
+  <div id="confetti-container"></div>
+
+  <script>
+    // Wait until the page is fully loaded
+    window.onload = () => {
+      // Show the popup
+      const popup = document.getElementById('popup');
+      popup.style.display = 'block';
+
+      // Trigger confetti animation
+      triggerConfetti();
+
+      // Add event listener to show offers when the popup is clicked
+      popup.addEventListener('click', () => {
+        // Hide the popup
+        popup.style.display = 'none';
+        
+        // Show the offers section
+        const offers = document.getElementById('offers');
+        offers.style.display = 'block';
+      });
+    };
+
+    // Function to generate random confetti
+    function triggerConfetti() {
+      const container = document.getElementById('confetti-container');
+
+      // Create 50 confetti pieces for effect
+      for (let i = 0; i < 50; i++) {
+        const confettiPiece = document.createElement('div');
+        confettiPiece.classList.add('confetti');
+        confettiPiece.style.left = `${Math.random() * 100}vw`;
+        confettiPiece.style.animationDuration = `${Math.random() * 2 + 3}s`;
+        confettiPiece.style.animationDelay = `${Math.random() * 2}s`;
+        container.appendChild(confettiPiece);
+      }
+    }
+  </script>
+
+</body>
+</html>
